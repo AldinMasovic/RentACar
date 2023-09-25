@@ -1,11 +1,16 @@
 package com.example.rentacar.adapter;
 
 import android.content.Context;
+import android.graphics.Typeface;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -40,7 +45,10 @@ public class CarListAdapter extends RecyclerView.Adapter<CarListAdapter.CarDetai
         holder.brandTextView.setText(car.getBrand().toString());
         holder.nameTextView.setText(car.getCarType().toString());
         holder.transmissionTextView.setText(car.getTransmission().toString());
-        holder.priceTextView.setText(car.getPricePerDay().toString());
+        String tempText = car.getPricePerDay().toString() + " KM";
+        SpannableString spanString = new SpannableString(tempText);
+        spanString.setSpan(new StyleSpan(Typeface.BOLD), 0, spanString.length(), 0);
+        holder.priceTextView.setText(tempText);
     }
 
     @Override

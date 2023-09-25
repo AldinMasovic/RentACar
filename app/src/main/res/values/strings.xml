@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">RentACar</string>
+
+    <!-- Define an array of pickup locations -->
+    <string-array name="pickup_locations">
+        <item>Sarajevo</item>
+        <item>Bihac</item>
+        <item>Travnik</item>
+        <item>Mostar</item>
+        <item>Banja Luka</item>
+        <!-- Add more pickup locations as needed -->
+    </string-array>
+
+    <!-- Define a string resource for the Spinner prompt (optional) -->
+    <string name="pickup_location_prompt">Select Pickup Location</string>
 </resources>

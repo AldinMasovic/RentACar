@@ -2,31 +2,87 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="center_vertical">
 
-    <EditText
-        android:id="@+id/etPickupLocation"
+    <Button
+        android:id="@+id/btnMyProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My profile"
+        android:layout_gravity="end"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        />
+
+    <!-- Pickup Location Spinner -->
+    <Spinner
+        android:id="@+id/spinnerPickupLocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Pickup Location"/>
+        android:layout_marginTop="16dp"
+        android:prompt="@string/pickup_location_prompt"/>
 
-    <EditText
-        android:id="@+id/etPickupAt"
+
+    <!-- Pickup Date Button and TextField -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Pickup At"/>
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
 
-    <EditText
-        android:id="@+id/etReturnAt"
+        <Button
+            android:id="@+id/btnPickupDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pickup Date"/>
+
+        <EditText
+            android:id="@+id/edtPickupDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:hint="Selected Pickup Date"
+            android:inputType="none"
+            android:focusable="false"
+            android:clickable="true"/>
+    </LinearLayout>
+
+    <!-- Return Date Button and TextField -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Return At"/>
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
 
+        <Button
+            android:id="@+id/btnReturnDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Return Date"/>
+
+        <EditText
+            android:id="@+id/edtReturnDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:hint="Selected Return Date"
+            android:inputType="none"
+            android:focusable="false"
+            android:clickable="true"/>
+    </LinearLayout>
+
+    <!-- Search Button -->
     <Button
         android:id="@+id/btnSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Search"/>
+        android:text="Search"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"/>
+
 
 </LinearLayout>

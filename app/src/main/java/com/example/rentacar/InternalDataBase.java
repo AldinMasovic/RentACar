@@ -37,15 +37,15 @@ public class InternalDataBase {
         Car car1 = new Car(gallery, Brand.BMW, Location.SARAJEVO, CarType.SEDAN, Fuel.DIESEL, Transmission.AUTOMATIC,
                 184, 5, 5, true,
                 true, BigDecimal.valueOf(2.0), BigDecimal.valueOf(123),
-                BigDecimal.valueOf(100), BigDecimal.valueOf(80));
+                BigDecimal.valueOf(100), BigDecimal.valueOf(80), 2012);
         Car car2 = new Car(gallery, Brand.BMW, Location.SARAJEVO, CarType.SEDAN, Fuel.DIESEL, Transmission.AUTOMATIC,
                 184, 5, 5, true,
                 true, BigDecimal.valueOf(2.0), BigDecimal.valueOf(123),
-                BigDecimal.valueOf(100), BigDecimal.valueOf(80));
+                BigDecimal.valueOf(100), BigDecimal.valueOf(80), 2015);
         Car car3 = new Car(gallery, Brand.BMW, Location.SARAJEVO, CarType.SEDAN, Fuel.DIESEL, Transmission.AUTOMATIC,
                 184, 5, 5, true,
                 true, BigDecimal.valueOf(2.0), BigDecimal.valueOf(123),
-                BigDecimal.valueOf(100), BigDecimal.valueOf(80));
+                BigDecimal.valueOf(100), BigDecimal.valueOf(80), 2018);
         carList.add(car1);
         carList.add(car2);
         carList.add(car3);

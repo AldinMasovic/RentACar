@@ -1,7 +1,8 @@
 package com.example.rentacar;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ListView;
+import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +15,7 @@ import java.util.List;
 public class UserProfileActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
+    private Button homeButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,7 @@ public class UserProfileActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.reservedCarsRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        homeButton = findViewById(R.id.btnHome);
 
         // Load user data and reserved cars
         String firstName = "John";
@@ -36,6 +39,10 @@ public class UserProfileActivity extends AppCompatActivity {
         // Create and set an adapter for the ListView to display reserved cars
         CarListAdapter adapter = new CarListAdapter(reservedCars);
         recyclerView.setAdapter(adapter);
+
+        homeButton.setOnClickListener(v -> {
+            startActivity(new Intent(UserProfileActivity.this, MainActivity.class));
+        });
     }
 
     private List<Car> getReservedCars() {

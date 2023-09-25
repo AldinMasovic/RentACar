@@ -26,12 +26,13 @@ public class Car {
     private BigDecimal pricePerDay;
     private BigDecimal pricePerWeek;
     private BigDecimal pricePerMonth;
+    private Integer productionYear;
 
     public Car() {
         this.uuid = UUID.randomUUID();
     }
 
-    public Car(Gallery gallery, Brand brand, Location location, CarType carType, Fuel fuel, Transmission transmission, Integer horsePower, Integer numberOfSeats, Integer numberOfDoors, Boolean airConditioner, Boolean navigation, BigDecimal cubicCapacity, BigDecimal pricePerDay, BigDecimal pricePerWeek, BigDecimal pricePerMonth) {
+    public Car(Gallery gallery, Brand brand, Location location, CarType carType, Fuel fuel, Transmission transmission, Integer horsePower, Integer numberOfSeats, Integer numberOfDoors, Boolean airConditioner, Boolean navigation, BigDecimal cubicCapacity, BigDecimal pricePerDay, BigDecimal pricePerWeek, BigDecimal pricePerMonth, Integer productionYear) {
         this.uuid = UUID.randomUUID();
         this.gallery = gallery;
         this.brand = brand;
@@ -48,6 +49,7 @@ public class Car {
         this.pricePerDay = pricePerDay;
         this.pricePerWeek = pricePerWeek;
         this.pricePerMonth = pricePerMonth;
+        this.productionYear = productionYear;
     }
 
     public UUID getUuid() {
@@ -176,5 +178,13 @@ public class Car {
 
     public void setPricePerMonth(BigDecimal pricePerMonth) {
         this.pricePerMonth = pricePerMonth;
+    }
+
+    public Integer getProductionYear() {
+        return productionYear;
+    }
+
+    public void setProductionYear(Integer productionYear) {
+        this.productionYear = productionYear;
     }
 }
