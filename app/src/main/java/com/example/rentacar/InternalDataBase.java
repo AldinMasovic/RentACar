@@ -31,23 +31,48 @@ public class InternalDataBase {
 
     private static void initRentACarData(@NotNull List<Car> carList) {
 
-        Gallery gallery = new Gallery();
-        gallery.getImages().add(R.drawable.ic_launcher_background);
 
-        Car car1 = new Car(gallery, Brand.BMW, Location.SARAJEVO, CarType.SEDAN, Fuel.DIESEL, Transmission.AUTOMATIC,
+        Gallery f30 = new Gallery();
+        f30.getImages().add(R.drawable.f30);
+        Car car1 = new Car(f30, Brand.BMW, Location.SARAJEVO, CarType.SEDAN, Fuel.DIESEL, Transmission.AUTOMATIC,
                 184, 5, 5, true,
                 true, BigDecimal.valueOf(2.0), BigDecimal.valueOf(123),
                 BigDecimal.valueOf(100), BigDecimal.valueOf(80), 2012);
-        Car car2 = new Car(gallery, Brand.BMW, Location.SARAJEVO, CarType.SEDAN, Fuel.DIESEL, Transmission.AUTOMATIC,
+        Gallery fiat = new Gallery();
+        fiat.getImages().add(R.drawable.fiat);
+        Car car2 = new Car(fiat, Brand.FIAT, Location.TRAVNIK, CarType.HATCHBACK, Fuel.GASOLINE, Transmission.MANUAL,
+                110, 5, 3, true,
+                true, BigDecimal.valueOf(2.0), BigDecimal.valueOf(56),
+                BigDecimal.valueOf(100), BigDecimal.valueOf(80), 2019);
+        Gallery leon = new Gallery();
+        leon.getImages().add(R.drawable.leon);
+        Car car3 = new Car(leon, Brand.SEAT, Location.BIHAC, CarType.SUV, Fuel.HYBRID, Transmission.AUTOMATIC,
                 184, 5, 5, true,
-                true, BigDecimal.valueOf(2.0), BigDecimal.valueOf(123),
-                BigDecimal.valueOf(100), BigDecimal.valueOf(80), 2015);
-        Car car3 = new Car(gallery, Brand.BMW, Location.SARAJEVO, CarType.SEDAN, Fuel.DIESEL, Transmission.AUTOMATIC,
+                true, BigDecimal.valueOf(2.0), BigDecimal.valueOf(70),
+                BigDecimal.valueOf(100), BigDecimal.valueOf(80), 2018);
+        Gallery merc = new Gallery();
+        merc.getImages().add(R.drawable.merc_c);
+        Car car4 = new Car(merc, Brand.MERCEDES, Location.SARAJEVO, CarType.SEDAN, Fuel.ELECTRIC, Transmission.AUTOMATIC,
                 184, 5, 5, true,
-                true, BigDecimal.valueOf(2.0), BigDecimal.valueOf(123),
+                true, BigDecimal.valueOf(2.0), BigDecimal.valueOf(110),
+                BigDecimal.valueOf(100), BigDecimal.valueOf(80), 2018);
+        Gallery porsche = new Gallery();
+        porsche.getImages().add(R.drawable.porsche);
+        Car car5 = new Car(porsche, Brand.PORSCHE, Location.SARAJEVO, CarType.SUPERCAR, Fuel.DIESEL, Transmission.AUTOMATIC,
+                184, 5, 5, true,
+                true, BigDecimal.valueOf(2.0), BigDecimal.valueOf(150),
+                BigDecimal.valueOf(100), BigDecimal.valueOf(80), 2018);
+        Gallery s5 = new Gallery();
+        s5.getImages().add(R.drawable.s5);
+        Car car6 = new Car(s5, Brand.AUDI, Location.SARAJEVO, CarType.SEDAN, Fuel.DIESEL, Transmission.MANUAL,
+                184, 5, 5, true,
+                true, BigDecimal.valueOf(2.0), BigDecimal.valueOf(100),
                 BigDecimal.valueOf(100), BigDecimal.valueOf(80), 2018);
         carList.add(car1);
         carList.add(car2);
         carList.add(car3);
+        carList.add(car4);
+        carList.add(car5);
+        carList.add(car6);
     }
 }
