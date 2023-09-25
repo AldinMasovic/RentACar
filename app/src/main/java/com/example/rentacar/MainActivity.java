@@ -23,7 +23,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.rentacar.model.GlobalVariables;
+
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -96,7 +100,13 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Pickup date and return date are required fields.", Toast.LENGTH_SHORT).show();
                 } else {
                     // Handle search button click
-                    startActivity(new Intent(MainActivity.this, CarListActivity.class));
+                    GlobalVariables.startAt = LocalDateTime.ofInstant(pickupDate.toInstant(),
+                            pickupDate.getTimeZone().toZoneId()).toLocalDate();
+                    GlobalVariables.returnAt = LocalDateTime.ofInstant(returnDate.toInstant(),
+                            returnDate.getTimeZone().toZoneId()).toLocalDate();
+
+                    Intent intent = new Intent(MainActivity.this, CarListActivity.class);
+                    startActivity(intent);
                 }
             }
         });

@@ -8,16 +8,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rentacar.adapter.CarListAdapter;
 import com.example.rentacar.model.Car;
-import com.example.rentacar.model.Gallery;
-import com.example.rentacar.model.enums.Brand;
-import com.example.rentacar.model.enums.CarType;
-import com.example.rentacar.model.enums.Fuel;
-import com.example.rentacar.model.enums.Location;
-import com.example.rentacar.model.enums.Transmission;
+import com.example.rentacar.model.GlobalVariables;
+import com.example.rentacar.model.InternalDataBase;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,25 +34,23 @@ public class CarListActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         // Handle item click to navigate to the third screen
-        adapter.setOnItemClickListener(new CarListAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                Intent intent = new Intent(CarListActivity.this, CarDetailsActivity.class);
-                intent.putExtra("car_position", position);
-                startActivity(intent);
-            }
+        adapter.setOnItemClickListener(position -> {
+            Intent intent = new Intent(CarListActivity.this, CarDetailsActivity.class);
+            intent.putExtra("car_position", position);
+            startActivity(intent);
         });
     }
 
     private List<Car> getCarData() {
-        // Implement code to fetch car data from a source (e.g., API or database)
-        // and return a list of Car objects
-        // For simplicity, here's a dummy data example:
         List<Car> carList = InternalDataBase.getCarList();
-//        carList.add(new Car("Car 1", "Brand 1", "Automatic", "$50", R.drawable.car1));
-//        carList.add(new Car("Car 2", "Brand 2", "Manual", "$45", R.drawable.car2));
-        // Add more cars as needed
-        return carList;
+        //filter the data for dates
+        List<Car> result = new ArrayList<>();
+        for (Car car : carList) {
+            if(car.getAvailability().isAvailable(GlobalVariables.getStartAt(), GlobalVariables.getReturnAt())) {
+                result.add(car);
+            }
+        }
+        return result;
     }
 
 

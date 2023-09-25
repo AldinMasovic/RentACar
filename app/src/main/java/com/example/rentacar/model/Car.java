@@ -28,6 +28,8 @@ public class Car {
     private BigDecimal pricePerMonth;
     private Integer productionYear;
 
+    private Availability availability;
+
     public Car() {
         this.uuid = UUID.randomUUID();
     }
@@ -50,6 +52,7 @@ public class Car {
         this.pricePerWeek = pricePerWeek;
         this.pricePerMonth = pricePerMonth;
         this.productionYear = productionYear;
+        this.availability = new Availability();
     }
 
     public UUID getUuid() {
@@ -186,5 +189,9 @@ public class Car {
 
     public void setProductionYear(Integer productionYear) {
         this.productionYear = productionYear;
+    }
+
+    public Availability getAvailability() {
+        return availability;
     }
 }

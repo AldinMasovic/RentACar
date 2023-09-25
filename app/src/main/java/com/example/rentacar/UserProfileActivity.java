@@ -3,14 +3,19 @@ package com.example.rentacar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rentacar.adapter.CarListAdapter;
 import com.example.rentacar.model.Car;
+import com.example.rentacar.model.InternalDataBase;
+import com.example.rentacar.model.Reservation;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserProfileActivity extends AppCompatActivity {
 
@@ -32,9 +37,10 @@ public class UserProfileActivity extends AppCompatActivity {
         List<Car> reservedCars = getReservedCars(); // Implement a method to fetch reserved cars
 
         // Display user information and reserved cars in the UI
-        // TextView firstNameTextView = findViewById(R.id.tvFirstName);
-        // firstNameTextView.setText(firstName);
-        // ... (similarly, set last name and populate the ListView)
+         TextView firstNameTextView = findViewById(R.id.tvFirstName);
+         firstNameTextView.setText(InternalDataBase.getCustomer().getFirstName());
+        TextView lastNameTextView = findViewById(R.id.tvLastName);
+        lastNameTextView.setText(InternalDataBase.getCustomer().getLastName());
 
         // Create and set an adapter for the ListView to display reserved cars
         CarListAdapter adapter = new CarListAdapter(reservedCars);
@@ -46,15 +52,10 @@ public class UserProfileActivity extends AppCompatActivity {
     }
 
     private List<Car> getReservedCars() {
-        // Implement code to fetch the list of cars reserved by the user
-        // Return a list of Car objects representing reserved cars
-        // For simplicity, here's a dummy data example:
-        //TODO: it is reserved cars for user not all cars
-        List<Car> reservedCars = InternalDataBase.getCarList();
-//        reservedCars.add(new Car("Reserved Car 1", "Brand X", "Automatic", "$60", R.drawable.car3));
-//        reservedCars.add(new Car("Reserved Car 2", "Brand Y", "Manual", "$55", R.drawable.car4));
-        // Add more reserved cars as needed
-        return reservedCars;
+        return InternalDataBase.getCustomer().getReservations()
+                .stream()
+                .map(Reservation::getCar)
+                .collect(Collectors.toList());
     }
 }
 

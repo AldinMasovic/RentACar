@@ -1,5 +1,6 @@
-package com.example.rentacar;
+package com.example.rentacar.model;
 
+import com.example.rentacar.R;
 import com.example.rentacar.model.Car;
 import com.example.rentacar.model.Gallery;
 import com.example.rentacar.model.enums.Brand;
@@ -7,6 +8,7 @@ import com.example.rentacar.model.enums.CarType;
 import com.example.rentacar.model.enums.Fuel;
 import com.example.rentacar.model.enums.Location;
 import com.example.rentacar.model.enums.Transmission;
+import com.example.rentacar.model.enums.UserType;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -17,6 +19,8 @@ import java.util.List;
 public class InternalDataBase {
 
     private static List<Car> carList;
+    private static Customer customer = new Customer("Paul", "Pavlovic", UserType.PREMIUM);
+
 
     private InternalDataBase() {
     }
@@ -27,6 +31,10 @@ public class InternalDataBase {
             initRentACarData(carList);
         }
         return carList;
+    }
+
+    public static Customer getCustomer() {
+        return customer;
     }
 
     private static void initRentACarData(@NotNull List<Car> carList) {
