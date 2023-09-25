@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 
@@ -90,12 +91,13 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Pickup date cannot be after return date.", Toast.LENGTH_SHORT).show();
             } else {
                 // Perform a search based on the selected values
-                String selectedLocation = pickupLocationSpinner.getSelectedItem().toString();
-                String pickupDateStr = formatDate(pickupDate);
-                String returnDateStr = formatDate(returnDate);
-
-                // Handle search button click
-                startActivity(new Intent(MainActivity.this, CarListActivity.class));
+                if (pickupDateEditText.getText().toString().equals("") ||
+                        returnDateEditText.getText().toString().equals("")) {
+                    Toast.makeText(MainActivity.this, "Pickup date and return date are required fields.", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Handle search button click
+                    startActivity(new Intent(MainActivity.this, CarListActivity.class));
+                }
             }
         });
 
