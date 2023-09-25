@@ -2,6 +2,8 @@ package com.example.rentacar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,6 +19,7 @@ import java.util.List;
 public class CarListActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
+    private TextView reservationPeriodTextView;
     private CarListAdapter adapter;
 
     @Override
@@ -26,6 +29,11 @@ public class CarListActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        reservationPeriodTextView = findViewById(R.id.tvReservationPeriod);
+        String baseText = reservationPeriodTextView.getText().toString();
+        String reservationPeriod = baseText + GlobalVariables.getStartAt().toString() + " - " + GlobalVariables.getReturnAt().toString();
+        reservationPeriodTextView.setText(reservationPeriod);
 
         // Initialize and populate the adapter with car data
         List<Car> carList = getCarData();
