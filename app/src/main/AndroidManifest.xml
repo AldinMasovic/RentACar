@@ -21,11 +21,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!-- CarListActivity -->
-        <activity
-            android:name=".CarListActivity"
-            android:label="Car List Activity">
-        </activity>
 
         <!-- CarDetailsActivity -->
         <activity

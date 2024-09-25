@@ -48,6 +48,7 @@ public class SignInActivity extends AppCompatActivity {
                             GlobalVariables.activeUser = user;
                             Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
                             startActivity(intent);
+                            finish();
                             return;
                         }
                     }
@@ -78,6 +79,7 @@ public class SignInActivity extends AppCompatActivity {
                 // Navigate to Sign Up screen
                 Intent intent = new Intent(SignInActivity.this, SignUpActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 

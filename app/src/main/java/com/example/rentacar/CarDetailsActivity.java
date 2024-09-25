@@ -86,6 +86,7 @@ public class CarDetailsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(CarDetailsActivity.this, ReservationsActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -93,8 +94,14 @@ public class CarDetailsActivity extends AppCompatActivity {
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CarDetailsActivity.this, HomeActivity.class);
+                Intent intent;
+                if (GlobalVariables.startAt == null) {
+                    intent = new Intent(CarDetailsActivity.this, HomeActivity.class);
+                } else {
+                    intent = new Intent(CarDetailsActivity.this, SearchResultsActivity.class);
+                }
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -104,6 +111,7 @@ public class CarDetailsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(CarDetailsActivity.this, ProfileActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
@@ -126,6 +134,7 @@ public class CarDetailsActivity extends AppCompatActivity {
             selectedCar.getAvailability().getReservations().add(reservation);
             GlobalVariables.activeUser.getReservations().add(reservation);
             startActivity(new Intent(CarDetailsActivity.this, ReservationsActivity.class));
+            finish();
         });
         builder.setNegativeButton("No", null);
         builder.show();

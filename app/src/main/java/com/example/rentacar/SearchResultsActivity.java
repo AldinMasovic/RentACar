@@ -60,6 +60,7 @@ public class SearchResultsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(SearchResultsActivity.this, ReservationsActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -67,8 +68,12 @@ public class SearchResultsActivity extends AppCompatActivity {
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                GlobalVariables.startAt = null;
+                GlobalVariables.returnAt = null;
+
                 Intent intent = new Intent(SearchResultsActivity.this, HomeActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -78,6 +83,7 @@ public class SearchResultsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(SearchResultsActivity.this, ProfileActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

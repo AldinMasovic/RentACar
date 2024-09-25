@@ -4,11 +4,11 @@ import java.time.LocalDate;
 
 public class GlobalVariables {
 
-    public static LocalDate startAt = LocalDate.now();
-    public static LocalDate returnAt = LocalDate.now();
+    public static LocalDate startAt;
+    public static LocalDate returnAt;
     public static String pickupLocation = "";
 
-    public static Customer activeUser;
+    public static Customer activeUser = null;
 
     public static LocalDate getStartAt() {
         return startAt;

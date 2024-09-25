@@ -49,6 +49,7 @@ public class SignUpActivity extends AppCompatActivity {
                     InternalDataBase.users.add(new Customer("FirstName", "LastName", email, password, UserType.STANDARD));
                     Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
                     startActivity(intent);
+                    finish();
                 }
             }
         });
@@ -60,6 +61,7 @@ public class SignUpActivity extends AppCompatActivity {
                 // Navigate to Sign In screen
                 Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

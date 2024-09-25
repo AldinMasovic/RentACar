@@ -61,6 +61,7 @@ public class HomeActivity extends AppCompatActivity {
                 GlobalVariables.pickupLocation = pickupPlaceSpinner.getSelectedItem().toString();
                 Intent intent = new Intent(HomeActivity.this, SearchResultsActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -78,6 +79,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, ReservationsActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -86,6 +88,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 

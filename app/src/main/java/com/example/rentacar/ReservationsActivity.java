@@ -45,6 +45,7 @@ public class ReservationsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ReservationsActivity.this, ReservationsActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -52,8 +53,14 @@ public class ReservationsActivity extends AppCompatActivity {
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ReservationsActivity.this, HomeActivity.class);
+                Intent intent;
+                if (GlobalVariables.startAt == null) {
+                    intent = new Intent(ReservationsActivity.this, HomeActivity.class);
+                } else {
+                    intent = new Intent(ReservationsActivity.this, SearchResultsActivity.class);
+                }
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -63,6 +70,7 @@ public class ReservationsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ReservationsActivity.this, ProfileActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
