@@ -91,7 +91,7 @@ public class CarDetailsActivity extends AppCompatActivity {
                     selectedCar);
             selectedCar.getAvailability().getReservations().add(reservation);
             InternalDataBase.getCustomer().getReservations().add(reservation);
-            startActivity(new Intent(CarDetailsActivity.this, UserProfileActivity.class));
+            startActivity(new Intent(CarDetailsActivity.this, ProfileActivity.class));
         });
         builder.setNegativeButton("No", null);
         builder.show();

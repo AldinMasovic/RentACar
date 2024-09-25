@@ -35,9 +35,41 @@
 
         <!-- UserProfileActivity -->
         <activity
-            android:name=".UserProfileActivity"
+            android:name=".ProfileActivity"
             android:label="User Profile Activity">
         </activity>
+
+        <!-- SignInActivity -->
+        <activity
+            android:name=".SignInActivity"
+            android:label="Sign in Activity">
+        </activity>
+
+        <!-- HomeActivity -->
+        <activity
+            android:name=".HomeActivity"
+            android:label="Home Activity">
+        </activity>
+
+        <!-- SearchResultsActivity -->
+        <activity
+            android:name=".SearchResultsActivity"
+            android:label="Search Results Activity">
+        </activity>
+
+        <!-- SignUpActivity -->
+        <activity
+            android:name=".SignUpActivity"
+            android:label="SignUpActivity Activity">
+        </activity>
+
+        <!-- ReservationsActivity -->
+        <activity
+            android:name=".ReservationsActivity"
+            android:label="Reservations Activity">
+        </activity>
+
+
     </application>
 
 </manifest>

@@ -4,29 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 
 import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
-import android.os.Bundle;
-import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TimePicker;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.rentacar.model.GlobalVariables;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Locale;
@@ -82,7 +73,9 @@ public class MainActivity extends AppCompatActivity {
         pickupDateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDatePickerDialog(pickupDate);
+//                showDatePickerDialog(pickupDate);
+                Intent intent = new Intent(MainActivity.this, SignInActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -112,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         myProfileButton.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, UserProfileActivity.class));
+            startActivity(new Intent(MainActivity.this, ProfileActivity.class));
         });
     }
 

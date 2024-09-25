@@ -6,6 +6,7 @@ public class GlobalVariables {
 
     public static LocalDate startAt = LocalDate.now();
     public static LocalDate returnAt = LocalDate.now();
+    public static String pickupLocation = "";
 
     public static LocalDate getStartAt() {
         return startAt;

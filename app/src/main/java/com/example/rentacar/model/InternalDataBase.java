@@ -33,6 +33,18 @@ public class InternalDataBase {
         return carList;
     }
 
+    public static List<Car> getCarAvailable() {
+        List<Car> carList = InternalDataBase.getCarList();
+        //filter the data for dates
+        List<Car> result = new ArrayList<>();
+        for (Car car : carList) {
+            if(car.getAvailability().isAvailable(GlobalVariables.getStartAt(), GlobalVariables.getReturnAt())) {
+                result.add(car);
+            }
+        }
+        return result;
+    }
+
     public static Customer getCustomer() {
         return customer;
     }

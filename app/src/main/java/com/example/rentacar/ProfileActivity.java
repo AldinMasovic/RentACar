@@ -17,7 +17,7 @@ import com.example.rentacar.model.Reservation;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class UserProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private Button homeButton;
@@ -47,7 +47,7 @@ public class UserProfileActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         homeButton.setOnClickListener(v -> {
-            startActivity(new Intent(UserProfileActivity.this, MainActivity.class));
+            startActivity(new Intent(ProfileActivity.this, MainActivity.class));
         });
     }
 
