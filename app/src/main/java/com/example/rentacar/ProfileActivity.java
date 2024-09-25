@@ -2,7 +2,9 @@ package com.example.rentacar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,51 +13,77 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rentacar.adapter.CarListAdapter;
 import com.example.rentacar.model.Car;
+import com.example.rentacar.model.Customer;
+import com.example.rentacar.model.GlobalVariables;
 import com.example.rentacar.model.InternalDataBase;
 import com.example.rentacar.model.Reservation;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
-    private Button homeButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
 
-        recyclerView = findViewById(R.id.reservedCarsRecyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        homeButton = findViewById(R.id.btnHome);
+
+        // Bottom navigation bar
+        ImageButton btnReservation = findViewById(R.id.reservationsButton);
+        ImageButton btnHome = findViewById(R.id.homeButton);
+        ImageButton btnProfile = findViewById(R.id.profileButton);
 
         // Load user data and reserved cars
-        String firstName = "John";
-        String lastName = "Doe";
-        List<Car> reservedCars = getReservedCars(); // Implement a method to fetch reserved cars
+        Customer user = GlobalVariables.activeUser;
+        List<Car> reservedCars = InternalDataBase.getReservedCars(user);
 
         // Display user information and reserved cars in the UI
-         TextView firstNameTextView = findViewById(R.id.tvFirstName);
-         firstNameTextView.setText(InternalDataBase.getCustomer().getFirstName());
+        TextView firstNameTextView = findViewById(R.id.tvFirstName);
         TextView lastNameTextView = findViewById(R.id.tvLastName);
-        lastNameTextView.setText(InternalDataBase.getCustomer().getLastName());
+        TextView profileTypeTextView = findViewById(R.id.tvProfileType);
+        TextView emailTextView = findViewById(R.id.tvEmail);
+        TextView totalReservationsTextView = findViewById(R.id.tvTotalReservations);
+        TextView spentTextView = findViewById(R.id.tvSpent);
+        TextView pointsTextView = findViewById(R.id.tvPoints);
 
-        // Create and set an adapter for the ListView to display reserved cars
-        CarListAdapter adapter = new CarListAdapter(reservedCars);
-        recyclerView.setAdapter(adapter);
 
-        homeButton.setOnClickListener(v -> {
-            startActivity(new Intent(ProfileActivity.this, MainActivity.class));
+        firstNameTextView.setText(user.getFirstName());
+        lastNameTextView.setText(user.getLastName());
+        profileTypeTextView.setText(user.getUserType().toString());
+        emailTextView.setText(user.getUsername());
+        totalReservationsTextView.setText("" + reservedCars.size());
+        BigDecimal totalSpent = reservedCars.stream().map(Car::getPricePerDay).reduce(BigDecimal.ZERO, BigDecimal::add);
+        spentTextView.setText(totalSpent.toString());
+        pointsTextView.setText(reservedCars.isEmpty() ? "0" : totalSpent.divide(BigDecimal.valueOf(reservedCars.size())).toString());
+        // Navigate to Reservations
+        btnReservation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, ReservationsActivity.class);
+                startActivity(intent);
+            }
         });
-    }
 
-    private List<Car> getReservedCars() {
-        return InternalDataBase.getCustomer().getReservations()
-                .stream()
-                .map(Reservation::getCar)
-                .collect(Collectors.toList());
+        // Navigate to Home
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // Navigate to Profile
+        btnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
 

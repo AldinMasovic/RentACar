@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rentacar.adapter.CarListAdapter;
 import com.example.rentacar.model.Car;
+import com.example.rentacar.model.GlobalVariables;
 import com.example.rentacar.model.InternalDataBase;
 
 import java.util.List;
@@ -31,7 +32,7 @@ public class ReservationsActivity extends AppCompatActivity {
         ImageButton btnProfile = findViewById(R.id.profileButton);
 
         // Initialize and populate the adapter with car data
-        List<Car> carList = InternalDataBase.getCarAvailable();
+        List<Car> carList = InternalDataBase.getReservedCars(GlobalVariables.activeUser);
         adapter = new CarListAdapter(carList);
 
         recyclerView = findViewById(R.id.recyclerView);

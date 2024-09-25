@@ -55,7 +55,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (fromDateText.getText().toString().isEmpty() || toDateText.getText().toString().isEmpty()) {
-                    Toast.makeText(HomeActivity.this, "Please fill out rental period", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HomeActivity.this, "Please fill out all fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 GlobalVariables.pickupLocation = pickupPlaceSpinner.getSelectedItem().toString();

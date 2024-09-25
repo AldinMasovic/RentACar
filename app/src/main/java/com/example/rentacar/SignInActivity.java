@@ -9,6 +9,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.rentacar.model.Customer;
+import com.example.rentacar.model.GlobalVariables;
+import com.example.rentacar.model.InternalDataBase;
+
 public class SignInActivity extends AppCompatActivity {
 
     private EditText emailInput, passwordInput;
@@ -39,9 +43,15 @@ public class SignInActivity extends AppCompatActivity {
                     Toast.makeText(SignInActivity.this, "Please fill out all fields", Toast.LENGTH_SHORT).show();
                 } else {
                     // Perform authentication
-                    Toast.makeText(SignInActivity.this, "Sign In Successful", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
-                    startActivity(intent);
+                    for (Customer user : InternalDataBase.users) {
+                        if (user.getUsername().equals(email) && user.getPassword().equals(password)) {
+                            GlobalVariables.activeUser = user;
+                            Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
+                            startActivity(intent);
+                            return;
+                        }
+                    }
+                    Toast.makeText(SignInActivity.this, "Wrong credentials", Toast.LENGTH_SHORT).show();
                 }
             }
         });

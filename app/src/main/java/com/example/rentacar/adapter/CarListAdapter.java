@@ -70,6 +70,7 @@ public class CarListAdapter extends RecyclerView.Adapter<CarListAdapter.CarDetai
         public TextView nameTextView;
         public TextView transmissionTextView;
         public TextView priceTextView;
+        public TextView period;
 
         public CarDetailsViewHolder(View itemView) {
             super(itemView);
@@ -78,6 +79,7 @@ public class CarListAdapter extends RecyclerView.Adapter<CarListAdapter.CarDetai
             nameTextView = itemView.findViewById(R.id.nameTextView);
             transmissionTextView = itemView.findViewById(R.id.transmissionTextView);
             priceTextView = itemView.findViewById(R.id.priceTextView);
+            period = itemView.findViewById(R.id.period);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

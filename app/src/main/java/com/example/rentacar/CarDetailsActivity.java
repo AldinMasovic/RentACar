@@ -4,7 +4,9 @@ import static java.time.temporal.ChronoUnit.DAYS;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
@@ -30,6 +32,11 @@ public class CarDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_details);
+
+        // Bottom navigation bar
+        ImageButton btnReservation = findViewById(R.id.reservationsButton);
+        ImageButton btnHome = findViewById(R.id.homeButton);
+        ImageButton btnProfile = findViewById(R.id.profileButton);
 
         galleryViewPager = findViewById(R.id.gallery);
         reserveButton = findViewById(R.id.btnReserve);
@@ -72,6 +79,33 @@ public class CarDetailsActivity extends AppCompatActivity {
             // Handle reserve button click
             reserveButton.setOnClickListener(view -> showReservationConfirmationDialog());
         }
+
+        // Navigate to Reservations
+        btnReservation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CarDetailsActivity.this, ReservationsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // Navigate to Home
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CarDetailsActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // Navigate to Profile
+        btnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CarDetailsActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void showReservationConfirmationDialog() {
@@ -81,17 +115,17 @@ public class CarDetailsActivity extends AppCompatActivity {
         builder.setPositiveButton("Yes", (dialogInterface, i) -> {
             // Handle reservation confirmation
             // Show a pop-up confirmation message
-            // Redirect to the fourth screen
+            // Redirect to the my reservation screen
 
             long between = DAYS.between(GlobalVariables.getStartAt(), GlobalVariables.getReturnAt());
             Reservation reservation = new Reservation(GlobalVariables.getStartAt(),
                     GlobalVariables.getReturnAt(),
-                    InternalDataBase.getCustomer(),
+                    GlobalVariables.activeUser,
                     selectedCar.getPricePerDay().multiply(BigDecimal.valueOf(between)),
                     selectedCar);
             selectedCar.getAvailability().getReservations().add(reservation);
-            InternalDataBase.getCustomer().getReservations().add(reservation);
-            startActivity(new Intent(CarDetailsActivity.this, ProfileActivity.class));
+            GlobalVariables.activeUser.getReservations().add(reservation);
+            startActivity(new Intent(CarDetailsActivity.this, ReservationsActivity.class));
         });
         builder.setNegativeButton("No", null);
         builder.show();

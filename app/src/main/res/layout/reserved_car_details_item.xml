@@ -26,7 +26,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="Brand"
-        android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/carImage"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,7 +35,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
-        android:textSize="14sp"
         android:text="Name"
         app:layout_constraintBottom_toTopOf="@+id/transmissionTextView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,7 +47,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
-        android:textSize="14sp"
         android:layout_marginEnd="8dp"
         android:text="Transmission"
         app:layout_constraintBottom_toTopOf="@+id/priceTextView"
@@ -58,10 +55,11 @@
         app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
 
     <TextView
-        android:id="@+id/period"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
+        android:layout_marginTop="4dp"
+        android:text="Period"
         app:layout_constraintStart_toStartOf="@+id/transmissionTextView"
         app:layout_constraintTop_toBottomOf="@+id/transmissionTextView" />
 

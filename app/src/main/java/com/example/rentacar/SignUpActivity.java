@@ -10,6 +10,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.rentacar.model.Customer;
+import com.example.rentacar.model.InternalDataBase;
+import com.example.rentacar.model.enums.UserType;
+
 public class SignUpActivity extends AppCompatActivity {
 
     private EditText emailInput, passwordInput;
@@ -42,6 +46,9 @@ public class SignUpActivity extends AppCompatActivity {
                 } else {
                     // Perform sign-up logic here
                     Toast.makeText(SignUpActivity.this, "Sign Up Successful", Toast.LENGTH_SHORT).show();
+                    InternalDataBase.users.add(new Customer("FirstName", "LastName", email, password, UserType.STANDARD));
+                    Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
+                    startActivity(intent);
                 }
             }
         });

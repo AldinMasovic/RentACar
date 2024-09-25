@@ -1,8 +1,6 @@
 package com.example.rentacar.model;
 
 import com.example.rentacar.R;
-import com.example.rentacar.model.Car;
-import com.example.rentacar.model.Gallery;
 import com.example.rentacar.model.enums.Brand;
 import com.example.rentacar.model.enums.CarType;
 import com.example.rentacar.model.enums.Fuel;
@@ -15,14 +13,16 @@ import org.jetbrains.annotations.NotNull;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class InternalDataBase {
 
     private static List<Car> carList;
-    private static Customer customer = new Customer("Paul", "Pavlovic", UserType.PREMIUM);
+    private static Customer customer = new Customer("user", "Pavlovic", "username@gmail.com", "password", UserType.PREMIUM);
 
-
+    public static List<Customer> users = new ArrayList<>();
     private InternalDataBase() {
+        users.add(customer);
     }
 
     public static List<Car> getCarList() {
@@ -31,6 +31,16 @@ public class InternalDataBase {
             initRentACarData(carList);
         }
         return carList;
+    }
+
+    public static List<Car> getReservedCars(Customer customer) {
+        return InternalDataBase.users.stream()
+                .filter(customer1 -> customer1.equals(customer))
+                .findFirst()
+                .orElse(users.get(0)).getReservations()
+                .stream()
+                .map(Reservation::getCar)
+                .collect(Collectors.toList());
     }
 
     public static List<Car> getCarAvailable() {

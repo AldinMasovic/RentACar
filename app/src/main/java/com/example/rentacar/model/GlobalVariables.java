@@ -8,6 +8,8 @@ public class GlobalVariables {
     public static LocalDate returnAt = LocalDate.now();
     public static String pickupLocation = "";
 
+    public static Customer activeUser;
+
     public static LocalDate getStartAt() {
         return startAt;
     }
